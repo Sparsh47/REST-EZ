@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/Navbar";
+import AnimatedCursor from "react-animated-cursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <AnimatedCursor
+            innerSize={8}
+            outerSize={35}
+            innerScale={1}
+            outerScale={2}
+            outerAlpha={0}
+            innerStyle={{
+              backgroundColor: "white",
+            }}
+            outerStyle={{
+              border: "3px solid white",
+            }}
+          />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
