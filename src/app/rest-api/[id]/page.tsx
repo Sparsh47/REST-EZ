@@ -1,12 +1,17 @@
-const page = () => {
+"use client";
+
+import { DataContext } from "@/app/context";
+import { useContext } from "react";
+
+const Page = () => {
+  const context = useContext(DataContext);
+  console.log("CONTEXT: ", context);
+
   return (
-    <div
-      className="flex items-center justify-center w-full"
-      style={{ height: "calc(100vh - 60px)" }}
-    >
+    <div className="h-[100vh] flex items-center justify-center w-full bg-black">
       page
     </div>
   );
 };
 
-export default page;
+export default Page;
