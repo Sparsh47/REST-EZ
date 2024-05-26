@@ -1,0 +1,28 @@
+.card {
+  width: 400px;
+  height: 200px;
+  border-radius: 12px;
+  -webkit-box-shadow: 13px 14px 40px -15px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 13px 14px 40px -15px rgba(204, 204, 204, 1);
+  box-shadow: 13px 14px 40px -15px rgba(204, 204, 204, 1);
+  transition: all 200ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0.5px solid rgba(0, 0, 0, 0.035);
+  font-size: 22px;
+  color: #333;
+  font-weight: 500;
+  user-select: none;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 30px;
+}

@@ -19,3 +19,4 @@ export async function conversation(message: string) {
         console.log("Error using openai api: ", error)
     }
 }
+
