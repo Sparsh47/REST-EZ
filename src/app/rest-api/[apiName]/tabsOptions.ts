@@ -2,9 +2,9 @@ export const tabsOptions = [
   {
     tab: "Authentication",
     options: [
-      {
-        "Model": ["Chat-GPT", "Gemini"]
-      },
+      // {
+      //   "Model": ["Chat-GPT", "Gemini"]
+      // },
       {
         "Language/Framework": ["Node.js with Express.js", "Python with Flask", "Python with Django", "Ruby on Rails", "Java with Spring Boot", "PHP with Laravel"]
       },
@@ -22,9 +22,9 @@ export const tabsOptions = [
   {
     tab: "E-Commerce",
     options: [
-      {
-        "Model": ["Chat-GPT", "Gemini"]
-      },
+      // {
+      //   "Model": ["Chat-GPT", "Gemini"]
+      // },
       {
         "Language/Framework": ["Node.js with Express.js", "Python with Flask", "Python with Django", "Ruby on Rails", "Java with Spring Boot", "PHP with Laravel"]
       },
@@ -48,9 +48,9 @@ export const tabsOptions = [
   {
     tab: "Chat",
     options: [
-      {
-        "Model": ["Chat-GPT", "Gemini"]
-      },
+      // {
+      //   "Model": ["Chat-GPT", "Gemini"]
+      // },
       {
         "Language/Framework": ["Node.js with Express.js", "Python with Flask", "Python with Django", "Ruby on Rails", "Java with Spring Boot", "PHP with Laravel"]
       },
@@ -74,9 +74,9 @@ export const tabsOptions = [
   {
     tab: "Custom",
     options: [
-      {
-        "Model": ["Chat-GPT", "Gemini"]
-      },
+      // {
+      //   "Model": ["Chat-GPT", "Gemini"]
+      // },
       {
         "Language/Framework": ["Node.js with Express.js", "Python with Flask", "Python with Django", "Ruby on Rails", "Java with Spring Boot", "PHP with Laravel"]
       },

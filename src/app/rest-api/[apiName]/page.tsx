@@ -9,6 +9,7 @@ import { useForm } from "@/context/apiContext";
 import { useRouter } from "next/navigation";
 import { v4 as uuidV4 } from "uuid";
 import { generatePrompt } from "@/lib/generatePrompt";
+import { conversation } from "../../../api/gemini/client";
 
 interface ApiType {
   authentication: number;
@@ -61,20 +62,21 @@ export default function Page({ params }: { params: { apiName: string } }) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const modelName = formData["Model"];
-    console.log(modelName);
-    let conversation;
-    if (modelName === "Gemini") {
-      const { conversation: geminiConversation } = await import(
-        "../../../api/gemini/client"
-      );
-      conversation = geminiConversation;
-    } else {
-      const { conversation: openAIConversation } = await import(
-        "../../../api/openai/client"
-      );
-      conversation = openAIConversation;
-    }
+    // const modelName = formData["Model"];
+    // const modelName = "Gemini";
+    // let conversation;
+    // if (modelName === "Gemini") {
+    //   const { conversation: geminiConversation } = await import(
+    //     "../../../api/gemini/client"
+    //   );
+    //   conversation = geminiConversation;
+    // }
+    // else {
+    //   const { conversation: openAIConversation } = await import(
+    //     "../../../api/openai/client"
+    //   );
+    //   conversation = openAIConversation;
+    // }
     const message = generatePrompt(formData, apiName);
     const response = await conversation(message);
     console.log("Response: ", response);
