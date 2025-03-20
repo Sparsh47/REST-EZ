@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useState } from "react";
+import React, { ReactNode, createContext, useContext, useState } from "react";
 
 interface ApiContextTypes {
   formData: any[];
@@ -18,7 +18,7 @@ const apiContext = createContext<ApiContextTypes>({
 
 export default function APIProvider({ children }: { children: ReactNode }) {
   const [formData, setFormData] = useState<any[]>([]);
-  const [response, setResponse] = useState();
+  const [response, setResponse] = useState<string>("");
 
   return (
     <apiContext.Provider
