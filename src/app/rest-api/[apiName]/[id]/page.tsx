@@ -1,13 +1,10 @@
 "use client";
 
 import CodeBlock from "@/components/shared/CodeBlock";
-import { Button } from "@/components/ui/button";
 import { useForm } from "@/context/apiContext";
-import { useRouter } from "next/navigation";
 
 const Page = ({ params }: { params: { apiName: string; id: string } }) => {
   const { response } = useForm();
-  const router = useRouter();
 
   const codeBlocks = response.split("```");
   const language = codeBlocks[1].split("\n")[0];
@@ -16,7 +13,7 @@ const Page = ({ params }: { params: { apiName: string; id: string } }) => {
     .join(" ")
     .split("**")
     .filter((string) => {
-      return string.trim().length > 0 && typeof string === "string";
+      return string.trim().length > 0;
     });
 
   return (

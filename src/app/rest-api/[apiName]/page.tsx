@@ -4,19 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { tabsOptions } from "./tabsOptions";
 import { Textarea } from "@/components/ui/textarea";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import { useForm } from "@/context/apiContext";
 import { useRouter } from "next/navigation";
 import { v4 as uuidV4 } from "uuid";
 import { generatePrompt } from "@/lib/generatePrompt";
-import { conversation } from "../../../api/gemini/client";
+import { conversation } from "@/api/gemini/client";
 
-interface ApiType {
-  authentication: number;
-  "e-commerce": number;
-  chat: number;
-  custom: number;
-}
+type ApiType = Record<ApiNameType, number>;
 
 type ApiNameType = "authentication" | "e-commerce" | "chat" | "custom";
 
@@ -27,14 +22,14 @@ export default function Page({ params }: { params: { apiName: string } }) {
   const { formData, setFormData, setResponse } = useForm();
   const router = useRouter();
 
-  const name: ApiType = {
-    authentication: 0,
-    "e-commerce": 1,
-    chat: 2,
-    custom: 3,
-  };
-
   useEffect(() => {
+    const name: ApiType = {
+      authentication: 0,
+      "e-commerce": 1,
+      chat: 2,
+      custom: 3,
+    };
+
     switch (name[apiName as ApiNameType]) {
       case 0:
         setUserChoice(0);
@@ -51,7 +46,7 @@ export default function Page({ params }: { params: { apiName: string } }) {
       default:
         break;
     }
-  }, [apiName, name]);
+  }, [apiName]);
 
   const handleInputChange = async (e: any, label: string) => {
     setFormData((prevFormData) => ({
@@ -62,21 +57,6 @@ export default function Page({ params }: { params: { apiName: string } }) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // const modelName = formData["Model"];
-    // const modelName = "Gemini";
-    // let conversation;
-    // if (modelName === "Gemini") {
-    //   const { conversation: geminiConversation } = await import(
-    //     "../../../api/gemini/client"
-    //   );
-    //   conversation = geminiConversation;
-    // }
-    // else {
-    //   const { conversation: openAIConversation } = await import(
-    //     "../../../api/openai/client"
-    //   );
-    //   conversation = openAIConversation;
-    // }
     const message = generatePrompt(formData, apiName);
     const response = await conversation(message);
     console.log("Response: ", response);
@@ -106,7 +86,7 @@ export default function Page({ params }: { params: { apiName: string } }) {
                 <Textarea
                   placeholder="Tell us a little bit about your idea"
                   className="resize-none"
-                  onChange={(e, label) =>
+                  onChange={(e: any) =>
                     handleInputChange(e, "Custom Requirements")
                   }
                 />
